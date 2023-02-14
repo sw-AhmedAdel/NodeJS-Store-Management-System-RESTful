@@ -7,12 +7,21 @@
 
 6- Open the .env file change the following to your data
 
+
  DB_PORT=3306        this is the defualt value so keep it 
  DB_HOST=localhost   this is the defualt value so keep it
  DB_USERNAME=root    remove root and add your database username
  DB_PASSWORD=nodejs  remove nodejs and add your database password
  DB_NAME=store       add the database you should have been created which is store
  DB_DILACT=mysql     this must be mysql 
+
+ You need to have an account on mailTrap in order to get the email for sign in and etc
+   Put your credintails here
+
+EMAIL_USERNAME= Put your Username on mailTrap credentials
+EMAIL_PASSWORD= Put your Password on mailTrap credentials
+EMAIL_HOST= Put your host on mailTrap credentials
+EMAIL_PORT= choose on port of  25 or 465 or 587 or 2525, i recommend you to use 587, it worked with me
 
 
  7- To run the server run this commands  
@@ -26,6 +35,6 @@ NOTE: Run project with cluster usint npm run cluster
       to stop it  pm2 stop src/server.js   
       to delete it pm2 delete src/server.js   
        
- 8- To see the all error handeling that return  back to the user in a meaningful message
+8 - To see the all error handeling that return  back to the user in a meaningful message
     please run this command npm run start-prod
 
