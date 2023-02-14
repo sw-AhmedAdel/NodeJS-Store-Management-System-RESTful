@@ -15,8 +15,16 @@
  DB_DILACT=mysql     this must be mysql 
 
 
- 7- To run the server run this command npm run start-dev,
-    Make sure you have installed nodemon globally npm install --save-dev 
+ 7- To run the server run this commands  
+      npm run start which will run in development
+      npm run prod which will run in production
+      npm run start-dev here run using nodemon which will run in development
+      npm run start-prod here run using nodemon which will run in production
+      Make sure you have installed nodemon globally npm install --save-dev to run nodemon 
+
+NOTE: Run project with cluster usint npm run cluster
+      to stop it  pm2 stop src/server.js   
+      to delete it pm2 delete src/server.js   
        
  8- To see the all error handeling that return  back to the user in a meaningful message
     please run this command npm run start-prod
