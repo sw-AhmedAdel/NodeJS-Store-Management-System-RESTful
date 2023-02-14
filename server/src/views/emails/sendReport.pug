@@ -1,0 +1,50 @@
+extends baseEmail
+
+block content
+  p Hi #{firstName},
+  p -- A report that includes orders made throughout the day.
+  table.btn.btn-primary(role='presentation', border='0', cellpadding='0', cellspacing='0')
+    thead
+      tr
+        td
+          h3 Orders
+    tbody
+      tr
+        td
+          | Product Name
+        td
+          | Quantity
+        td
+          | Price
+        td
+          | Client Name
+      each order in orders
+        tr
+          td
+            | #{order.Product.name}
+          td
+            | #{order.quantity}
+          td
+            | #{order.Product.price}
+          td
+            | #{order.Client.name}
+
+  p -- Report includes the products with quantity
+  table.btn.btn-primary(role='presentation', border='0', cellpadding='0', cellspacing='0')
+    thead
+      tr
+        td
+          h3 Product Report
+    tbody
+      tr
+        td
+          | Product Name
+        td
+          | Quantity
+      each product in productReport
+        tr
+          td
+            | #{product.name}
+          td
+            | #{product.quantity}
+  p Total sales: #{totalSales}
