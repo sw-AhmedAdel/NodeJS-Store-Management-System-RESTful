@@ -1,5 +1,13 @@
 require("dotenv").config();
 const http = require("http");
+
+process.on("uncaughtException", function (err) {
+  console.log(err);
+  console.log("uncaught Exceptions");
+  console.log(err.name, err.message);
+  process.exit(1);
+});
+
 const app = require("./app");
 const server = http.createServer(app);
 const { mysqlConnect } = require("./services/mysqlConnect");
@@ -45,3 +53,12 @@ async function startServer() {
 }
 
 startServer();
+
+process.on("unhandledRejection", (err) => {
+  console.log("unhandled Rejection");
+  console.log(err.name, err.message);
+
+  server.close(() => {
+    process.exit(1);
+  });
+});
