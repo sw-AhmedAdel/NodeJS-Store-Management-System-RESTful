@@ -25,19 +25,15 @@ const multerStorage = multer.diskStorage({
 
 const multerFilter = (req, file, cb) => {
   if (
-    file.mimetype ===
+    file.mimetype !==
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
   ) {
-    if (file.size <= 5 * 1024 * 1024) {
-      cb(null, true);
-    } else {
-      cb(new appError("Please upload file size less than 5MB", 400), false);
-    }
-  } else {
     cb(
-      new appError("Not an excel sheel! please upload only excel sheel", 400),
+      new appError("Not an excel sheel! please upload only excel sheet", 400),
       false
     );
+  } else {
+    cb(null, true);
   }
 };
 

@@ -1,5 +1,11 @@
 const appError = require("../services/ClassErrMiddleware");
 
+function fieldisMissing() {
+  const message =
+    "There is a missing field, please make sure you provided all field with there values";
+  return new appError(message, 400);
+}
+
 function JsonWebTokenError() {
   const message = "Please signup or login, your token is invalid";
   return new appError(message, 401);
@@ -63,7 +69,12 @@ function GlobalHandelMiddleware(err, req, res, next) {
     // send a readable error to the user if we are on production
 
     let error = Object.assign(err);
-
+    if (
+      error.message === "Unexpected field" ||
+      error.message === "Field name missing"
+    ) {
+      error = fieldisMissing();
+    }
     if (
       error.original?.code === "ER_DUP_ENTRY" &&
       error.original?.errno === 1062

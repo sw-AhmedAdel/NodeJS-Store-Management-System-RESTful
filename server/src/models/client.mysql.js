@@ -76,7 +76,6 @@ const Client = sequelize.define(
     },
     filepath: {
       type: Sequelize.STRING,
-      allowNull: true,
     },
   },
   {
